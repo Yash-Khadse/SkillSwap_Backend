@@ -1,0 +1,26 @@
+{
+  "name": "skillswap-backend",
+  "version": "1.0.0",
+  "description": "Backend for SkillSwap - Peer Learning Platform",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "author": "SkillSwap Team",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cookieparser": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "mongoose": "^7.8.6",
+    "morgan": "^1.10.0",
+    "next-auth": "^4.24.11",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
