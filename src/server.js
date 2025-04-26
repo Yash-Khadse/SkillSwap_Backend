@@ -1,8 +1,8 @@
-require('dotenv').config();
-const connectDB = require('./config/db');
-const app = require('./app');
-const http = require('http');
-const { Server } = require('socket.io');
+require("dotenv").config();
+const connectDB = require("./config/db");
+const app = require("./app");
+const http = require("http");
+const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,26 +15,27 @@ const io = new Server(server, {
 });
 
 // Attach io instance to app for controllers to use
-app.set('io', io);
+app.set("io", io);
 
-io.on('connection', (socket) => {
-  console.log('A user connected:', socket.id);
+io.on("connection", (socket) => {
+  console.log("A user connected:", socket.id);
 
-  socket.on('joinMatch', (matchId) => {
+  socket.on("joinMatch", (matchId) => {
     socket.join(matchId);
   });
 
-  socket.on('leaveMatch', (matchId) => {
+  socket.on("leaveMatch", (matchId) => {
     socket.leave(matchId);
   });
 
-  socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
+  socket.on("disconnect", () => {
+    console.log("User disconnected:", socket.id);
   });
 });
 
 connectDB().then(() => {
   server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    console.log("Mongo URI:", process.env.MONGO_URI);
   });
 });
